@@ -4,9 +4,9 @@ import { useGlobalContext } from "./context";
 const Sidebar = () => {
   const { isSidebarOpen, closeSidebar } = useGlobalContext();
   return (
-    <aside className="sidebar">
+    <aside className={isSidebarOpen ? 'sidebar show-sidebar' : 'sidebar'}>
       <div className="sidebar-container">
-        <button className="close-btn">
+        <button className="close-btn" onClick={closeSidebar}>
           <FaTimes />
         </button>
         <div className="sidebar-links">
@@ -20,8 +20,7 @@ const Sidebar = () => {
                     const { id, label, icon, url } = link;
                     return (
                       <a key={id} href={url}>
-                        {icon}
-                        {label}
+                        {icon} {label}
                       </a>
                     );
                   })}
